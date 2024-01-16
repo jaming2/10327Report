@@ -1,0 +1,45 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>압전장치 전력량 구하기</title>
+</head>
+
+<body>
+    <h1>압전장치 전력량 구하기</h1>
+    <h3>설명: 압전장치에서 발생하는 전력량 W=1/2*d33*g33*f^2*T/WL을 이용하여 전력량을 구합니다
+    </h3>
+    <input id="force" type="text" placeholder="누르는 힘:N">
+    <input id="thickness" type="text" placeholder="소자의 두께 단위:mm">
+    <input id="width" type="text" placeholder="소자의 폭 단위:mm">
+    <input id="length" type="text" placeholder="소자의 길이 단위:mm">
+    <button id="button1">실행하기</button>
+    <h5>입력칸에는 숫자만 입력해주세요</h5>
+    <h1 id="result"></h1>
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const Button1 = document.querySelector("#button1");
+            const Result = document.querySelector("#result");
+
+            function calculate() {
+                const thicknessValue = parseFloat(document.querySelector("#thickness").value) || 0;
+                const widthValue = parseFloat(document.querySelector("#width").value) || 0;
+                const lengthValue = parseFloat(document.querySelector("#length").value) || 0;
+                const forceValue = parseFloat(document.querySelector("#force").value) || 0;
+
+
+
+                const total = 1 / 2 * 20056 * forceValue * thicknessValue / (widthValue * lengthValue)
+                const squareRoot = total;
+                Result.textContent = `압전소자의 전력량(Wh/와트시): ${squareRoot.toFixed(2)}Wh`;
+            }
+
+            Button1.addEventListener("click", calculate);
+        });
+    </script>
+</body>
+
+</html>
